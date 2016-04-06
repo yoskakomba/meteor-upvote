@@ -1,0 +1,123 @@
+<body>
+  {{> navbar}}
+  <div class="container">
+    <!--{{#each posts}}
+      {{> postRow this}}
+    {{else}}
+      <label>There are no posts here!</label>
+    {{/each}}-->
+    {{> post}}
+  </div>
+
+</body>
+
+<template name="postRow">
+  <div class="row">
+    <div class="col-md-1 center-text">
+      <div class="row">
+        <i class="fa fa-arrow-up"></i>
+      </div>
+      <div class="row">
+        {{numUpvotes}}
+      </div>
+      <div class="row">
+        <i class="fa fa-arrow-down"></i>
+      </div>
+    </div><!-- col md 1 -->
+    <div class="col-md-11">
+      <h4>{{title}}</h4>
+    </div>
+    <div class="row">
+      <label>Read Comments</label>
+    </div>
+  </div>
+
+</template>
+
+<template name="post">
+  {{> postRow post}}
+  {{> newComment}}
+  <div class="row">
+    <div class="col-md-12">
+      <h4>Comments</h4>
+    </div>
+
+  </div>
+  {{#each comments}}
+      {{> commentRow this}}
+    {{else}}
+      <label>There are no comments!</label>
+  {{/each}}
+
+</template>
+
+<template name="commentRow">
+  <div class="row">
+    <div class="col-md-1 center-text">
+      <div class="row">
+        <i class="fa fa-arrow-up"></i>
+      </div>
+      <div class="row">
+        {{numUpvotes}}
+      </div>
+      <div class="row">
+        <i class="fa fa-arrow-down"></i>
+      </div>
+    </div>
+    <div class="col-md-11">
+      <label>{{username}}</label>
+    </div>
+    <div class="row">
+      <h5>{{commentText}}</h5>
+    </div>
+  </div>
+</template>
+
+<template name="newPost">
+  <form action="" class="new-post">
+    <div class="row">
+      <div class="form-group">
+        <div class="col-md-6">
+          <input type="text" class="form-control" name="title" placeholder="title"/>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="form-group">
+        <div class="col-md-6">
+          <textarea class="form-control" name="Content" placeholder="content" rows="5"></textarea>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="form-group">
+        <div class="col-md-3">
+          <button type="submit" class="btn btn-success add-post">Submit</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</template>
+
+<template name="newComment">
+  <form action="" class="new-comment">
+    <div class="row">
+      <div class="form-group">
+        <div class="col-md-6">
+          <label for="">Commenting as curtis</label>
+          <textarea class="form-control" name="Content" placeholder="Post content" rows="5"></textarea>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="form-group">
+        <div class="col-md-3">
+          <button type="submit" class="btn btn-success add-post">Submit</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</template>
